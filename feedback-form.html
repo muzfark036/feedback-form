@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Painting Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 40px;
+    }
+    .form-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    input[type="submit"] {
+      background-color: #1b75bc;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Painting Service Feedback</h2>
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+      <!-- Your Salesforce Org ID -->
+      <input type="hidden" name="orgid" value="00D2y0000006t7n">
+      
+      <!-- Hidden field to capture Opportunity ID from URL -->
+      <input type="hidden" id="oppId" name="00NIi000000djDF" value="">
+
+      <label for="00NIi000000djD5">Rating (1 to 5)</label>
+      <select name="00NIi000000djD5" id="00NIi000000djD5" required>
+        <option value="">--Select Rating--</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+
+      <label for="00NIi000000djDA">Feedback Comments</label>
+      <textarea name="00NIi000000djDA" id="00NIi000000djDA" rows="5" required></textarea>
+
+      <input type="submit" value="Submit Feedback">
+    </form>
+  </div>
+
+  <script>
+    // Read oppId from URL and populate hidden field
+    const urlParams = new URLSearchParams(window.location.search);
+    const oppId = urlParams.get('oppId');
+    if (oppId) {
+      document.getElementById("oppId").value = oppId;
+    }
+  </script>
+</body>
+</html>
