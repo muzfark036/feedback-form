@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Painting Service Feedback</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+      }
+      h2 {
+        text-align: center;
+      }
+      select,
+      textarea,
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin: 15px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+      input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Painting Service Feedback</h2>
+      <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?orgId=00D2y0000006t7n" method="POST">
+
+        <!-- Hidden Fields -->
+        <input type="hidden" name="orgid" value="00D2y0000006t7n" />
+        <input type="hidden" name="retURL" value="https://thankyoupage.com" />
+        
+        <!-- Opportunity ID (hidden) -->
+        <input type="hidden" name="00NIi000000djDF" id="oppIdField" />
+
+        <!-- Feedback Rating -->
+        <label for="00NIi000000djD5">Rating (1 to 5)</label>
+        <select name="00NIi000000djD5" required>
+          <option value="">--Select Rating--</option>
+          <option value="1">1 - Poor</option>
+          <option value="2">2 - Fair</option>
+          <option value="3">3 - Good</option>
+          <option value="4">4 - Very Good</option>
+          <option value="5">5 - Excellent</option>
+        </select>
+
+        <!-- Feedback Comments -->
+        <label for="00NIi000000djDA">Feedback Comments</label>
+        <textarea name="00NIi000000djDA" rows="4" placeholder="Write your feedback here..." required></textarea>
+
+        <input type="submit" value="Submit Feedback" />
+      </form>
+    </div>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const oppId = urlParams.get('oppId');
+      if (oppId) {
+        document.getElementById("oppIdField").value = oppId;
+      }
+    </script>
+  </body>
+</html>
